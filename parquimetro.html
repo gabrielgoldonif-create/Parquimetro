@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Parquímetro Digital</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="parquimetro.js" defer></script>
+</head>
+
+<body>
+  <main class="card">
+
+    <h1>PARQUÍMETRO DIGITAL EBAC</h1>
+    <h2>Informe o tempo de estacionamento.</h2>
+
+    <div class="campo">
+      <label for="horas">Horas:</label>
+      <input id="horas" class="tempo-input" type="number" placeholder="Ex: 1">
+
+      <label for="minutos">Minutos:</label>
+      <input id="minutos" class="tempo-input" type="number" placeholder="Ex: 30">
+    </div>
+
+    <div class="campo">
+      <button id="btnCalcular">Enviar</button>
+      <button id="btnReiniciar" class="ghost" hidden>Informar de novo</button>
+    </div>
+
+    <p>Valor a pagar: R$ <span id="valor">0,00</span></p>
+    <p id="mensagem"></p>
+
+  </main>    
+</body>
+</html>
+
