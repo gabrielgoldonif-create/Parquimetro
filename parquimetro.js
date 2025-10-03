@@ -1,39 +1,39 @@
 const btnCalcular = document.getElementById("btnCalcular");
 const btnReiniciar = document.getElementById("btnReiniciar");
-const inputHoras = document.getElementById("horas");
-const inputMinutos = document.getElementById("minutos");
-const valorSpan = document.getElementById("valor");
+const inputValor = document.getElementById("valorPago");
+const tempoSpan = document.getElementById("tempo");
+const trocoSpan = document.getElementById("troco");
 const mensagem = document.getElementById("mensagem");
 
 btnCalcular.addEventListener("click", () => {
-  const horas = parseInt(inputHoras.value) || 0;
-  const minutos = parseInt(inputMinutos.value) || 0;
+  const valor = parseFloat(inputValor.value);
 
-  const totalMinutos = (horas * 60) + minutos;
-
-  // Validações //
-  if (totalMinutos <= 0) {
-    mensagem.textContent = "⚠️ Informe um tempo válido (maior que 0).";
-    valorSpan.textContent = "0,00";
+  if (isNaN(valor) || valor <= 0) {
+    mensagem.textContent = "⚠️ Informe um valor válido maior que 0.";
+    tempoSpan.textContent = "0";
+    trocoSpan.textContent = "0,00";
     return;
   }
 
-  if (totalMinutos > 120) {
-    mensagem.textContent = "⚠️ O tempo máximo permitido é de 120 minutos.";
-    valorSpan.textContent = "0,00";
-    return;
+  // Regra: 30 minutos = R$1, máximo 120 min
+  let blocosComprados = Math.floor(valor / 1); // cada R$1 = 30 min
+  let minutos = blocosComprados * 30;
+
+  if (minutos > 120) {
+    minutos = 120;
   }
 
-  // Cálculo //
-  const valor = (totalMinutos / 30) * 1;
+  const custo = (minutos / 30) * 1;
+  const troco = Math.max(0, valor - custo);
 
-  valorSpan.textContent = valor.toFixed(2).replace(".", ",");
-  mensagem.textContent = `✅ Você comprou ${totalMinutos} minutos de estacionamento.`;
+  tempoSpan.textContent = minutos;
+  trocoSpan.textContent = troco.toFixed(2).replace(".", ",");
+  mensagem.textContent = `✅ Você comprou ${minutos} minutos de estacionamento.`;
 });
 
 btnReiniciar.addEventListener("click", () => {
-  inputHoras.value = "";
-  inputMinutos.value = "";
-  valorSpan.textContent = "0,00";
+  inputValor.value = "";
+  tempoSpan.textContent = "0";
+  trocoSpan.textContent = "0,00";
   mensagem.textContent = "";
 });
