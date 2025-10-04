@@ -11,21 +11,20 @@
   <main class="card">
 
     <h1>PARQUÍMETRO DIGITAL EBAC</h1>
-   <h2>Informe o valor pago e calcule o tempo.</h2>
+    <h2>Informe o valor pago e calcule o tempo.</h2>
 
-<label for="valorPago">Valor pago (R$):</label>
-<input id="valorPago" type="number" step="0.01" placeholder="Ex: 3.50">
+    <label for="valorPago">Valor pago (R$):</label>
+    <input id="valorPago" type="number" step="0.01" placeholder="Ex: 3.50">
 
-<div class="campo">
-  <button id="btnCalcular">Calcular</button>
-  <button id="btnReiniciar" class="ghost" hidden>Novo cálculo</button>
-</div>
+    <div class="campo">
+      <button id="btnCalcular">Calcular</button>
+      <button id="btnReiniciar" class="ghost">Novo cálculo</button>
+    </div>
 
-<p>Tempo de estacionamento: <strong><span id="tempo">0</span> min</strong></p>
-<p>Troco: <strong>R$ <span id="troco">0,00</span></strong></p>
-<p id="mensagem"></p>
+    <p>Tempo de estacionamento: <strong><span id="tempo">0</span> min</strong></p>
+    <p>Troco: <strong>R$ <span id="troco">0,00</span></strong></p>
+    <p id="mensagem"></p>
 
   </main>    
 </body>
 </html>
-
